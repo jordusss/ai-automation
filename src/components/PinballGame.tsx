@@ -46,23 +46,43 @@ const PinballGame = () => {
       },
     });
 
-    // Create boundaries
+    // Create boundaries with render properties included
     const walls = [
-      Bodies.rectangle(200, 0, 400, 20, { isStatic: true }), // top
-      Bodies.rectangle(200, 600, 400, 20, { isStatic: true }), // bottom
-      Bodies.rectangle(0, 300, 20, 600, { isStatic: true }), // left
-      Bodies.rectangle(400, 300, 20, 600, { isStatic: true }), // right
+      Bodies.rectangle(200, 0, 400, 20, {
+        isStatic: true,
+        render: {
+          fillStyle: '#8B5CF6',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
+      Bodies.rectangle(200, 600, 400, 20, {
+        isStatic: true,
+        render: {
+          fillStyle: '#8B5CF6',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
+      Bodies.rectangle(0, 300, 20, 600, {
+        isStatic: true,
+        render: {
+          fillStyle: '#8B5CF6',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
+      Bodies.rectangle(400, 300, 20, 600, {
+        isStatic: true,
+        render: {
+          fillStyle: '#8B5CF6',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
     ];
 
-    walls.forEach(wall => {
-      Body.setRender(wall, {
-        fillStyle: '#8B5CF6',
-        strokeStyle: '#D946EF',
-        lineWidth: 2,
-      });
-    });
-
-    // Create ball
+    // Create ball with render properties included
     const ball = Bodies.circle(200, 100, 10, {
       restitution: 0.9,
       render: {
@@ -73,20 +93,33 @@ const PinballGame = () => {
     });
     ballRef.current = ball;
 
-    // Create bumpers
+    // Create bumpers with render properties included
     const bumpers = [
-      Bodies.circle(100, 300, 25, { isStatic: true }),
-      Bodies.circle(300, 300, 25, { isStatic: true }),
-      Bodies.circle(200, 200, 25, { isStatic: true }),
+      Bodies.circle(100, 300, 25, {
+        isStatic: true,
+        render: {
+          fillStyle: '#F97316',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
+      Bodies.circle(300, 300, 25, {
+        isStatic: true,
+        render: {
+          fillStyle: '#F97316',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
+      Bodies.circle(200, 200, 25, {
+        isStatic: true,
+        render: {
+          fillStyle: '#F97316',
+          strokeStyle: '#D946EF',
+          lineWidth: 2,
+        }
+      }),
     ];
-
-    bumpers.forEach(bumper => {
-      Body.setRender(bumper, {
-        fillStyle: '#F97316',
-        strokeStyle: '#D946EF',
-        lineWidth: 2,
-      });
-    });
 
     // Add all bodies to the world
     World.add(engine.world, [...walls, ball, ...bumpers]);
