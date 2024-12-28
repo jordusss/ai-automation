@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <a href="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-          AIAgency
+          AI Automation NL
         </a>
 
         {/* Desktop Menu */}
