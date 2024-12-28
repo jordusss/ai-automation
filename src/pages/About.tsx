@@ -11,7 +11,7 @@ const About = () => {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-purple-600">
-            About The Automation Group
+            Transform Your Business with AI Driven Automation
           </h1>
           
           <div className="space-y-8 text-lg text-foreground/80">
