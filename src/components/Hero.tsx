@@ -12,7 +12,7 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-purple-600"
           >
-            Transform Your Business with AI Automation
+            Transform Your Business with AI Driven Automation
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
