@@ -1,30 +1,41 @@
 import { Bot, Brain, Gauge, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const services = [
+export const services = [
   {
     icon: <Bot className="h-8 w-8" />,
     title: "AI Chatbots",
     description: "Intelligent conversational agents that enhance customer service",
+    slug: "ai-chatbots",
+    image: "photo-1485827404703-89b55fcc595e",
   },
   {
     icon: <Workflow className="h-8 w-8" />,
     title: "Process Automation",
     description: "Streamline workflows with smart automation solutions",
+    slug: "process-automation",
+    image: "photo-1488972685288-c3fd157d7c7a",
   },
   {
     icon: <Brain className="h-8 w-8" />,
     title: "Machine Learning",
     description: "Custom ML models for predictive analytics",
+    slug: "machine-learning",
+    image: "photo-1526374965328-7f61d4dc18c5",
   },
   {
     icon: <Gauge className="h-8 w-8" />,
     title: "Performance Optimization",
     description: "AI-driven insights to improve efficiency",
+    slug: "performance-optimization",
+    image: "photo-1487058792275-0ad4aaf24ca7",
   },
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
@@ -42,10 +53,13 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden relative group"
+              className="rounded-2xl overflow-hidden relative group cursor-pointer"
+              onClick={() => navigate(`/services/${service.slug}`)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl">
+              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center">
                 <div className="text-primary mb-6 transform transition-transform duration-300 group-hover:scale-110">
                   {service.icon}
                 </div>
