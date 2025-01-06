@@ -13,6 +13,37 @@ const ServiceDetail = () => {
     return null;
   }
 
+  const getBackgroundStyle = (slug: string) => {
+    if (slug === "ai-chatbots") {
+      return {
+        background: `
+          linear-gradient(45deg, 
+            rgba(34, 31, 38, 0.95), 
+            rgba(155, 135, 245, 0.85)
+          ),
+          radial-gradient(circle at 50% 50%, 
+            rgba(14, 165, 233, 0.4) 0%, 
+            rgba(139, 92, 246, 0.4) 50%, 
+            rgba(217, 70, 239, 0.4) 100%
+          ),
+          repeating-linear-gradient(
+            45deg,
+            rgba(249, 115, 22, 0.1) 0px,
+            rgba(249, 115, 22, 0.1) 2px,
+            transparent 2px,
+            transparent 10px
+          )
+        `,
+        backgroundBlendMode: "overlay, screen, normal",
+        position: "relative",
+        overflow: "hidden",
+      } as const;
+    }
+    return {
+      backgroundImage: `url(https://source.unsplash.com/${service.image})`
+    };
+  };
+
   const benefits = {
     "ai-chatbots": [
       {
@@ -96,11 +127,43 @@ const ServiceDetail = () => {
           className="glass-card rounded-2xl overflow-hidden mb-12"
         >
           <div
-            className="h-64 md:h-96 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(https://source.unsplash.com/${service.image})`
-            }}
-          />
+            className="h-64 md:h-96 bg-cover bg-center relative"
+            style={getBackgroundStyle(service.slug)}
+          >
+            {service.slug === "ai-chatbots" && (
+              <>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 0.5, 1] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="w-32 h-32 rounded-full border-2 border-white/30"
+                  />
+                </div>
+                <div className="absolute inset-0">
+                  {[...Array(20)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-white/30 rounded-full"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                      }}
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.3, 0.7, 0.3],
+                      }}
+                      transition={{
+                        duration: 2 + Math.random() * 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2,
+                      }}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
           <div className="p-8 md:p-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">{service.title}</h1>
             <p className="text-xl text-foreground/60 mb-8">{service.description}</p>
