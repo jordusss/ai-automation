@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
 import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
@@ -62,6 +63,7 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
               </Routes>
             </main>
             <Footer />
