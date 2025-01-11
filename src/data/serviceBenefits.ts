@@ -16,63 +16,79 @@ export const serviceBenefits = {
         title: "Data-Driven Insights",
         description: "Automatically gather valuable user feedback, trends, and pain points during each conversation. Leverage these insights to refine products, optimize services, and continually improve the customer journey."
       }
-    ]
+    ],
+    cta: {
+      title: "Ready to Enhance Your Customer Experience?",
+      description: "Start now to unlock the power of AI Chatbots and revolutionize the way you engage with your audience. Our team will help you implement a cutting-edge solution tailored to your business, so you can focus on what matters most—growing your brand."
+    }
   },
   "process-automation": {
     title: "Process Automation",
-    subtitle: "Streamline Your Operations with Intelligent Automation",
-    description: "Transform your business operations with our cutting-edge process automation solutions. Eliminate repetitive tasks, reduce errors, and free up your team to focus on strategic initiatives that drive growth.",
+    subtitle: "Streamline Your Business with Intelligent Workflows",
+    description: "Our Process Automation solutions eliminate repetitive tasks, increase accuracy, and speed up operations—so your team can focus on high-value, strategic initiatives.",
     benefits: [
       {
-        title: "Increased Efficiency",
-        description: "Automate repetitive tasks and workflows to significantly reduce processing time and eliminate human error. Watch your team's productivity soar as they focus on high-value activities."
+        title: "Reduced Operational Costs",
+        description: "Slash labor-intensive processes and save on overhead, allowing resources to be reallocated to areas that drive innovation."
       },
       {
-        title: "Cost Reduction",
-        description: "Minimize operational costs through automated workflows that require minimal human intervention. Experience substantial savings in time, resources, and labor costs."
+        title: "Enhanced Efficiency",
+        description: "Automate everyday tasks with precision and consistency, accelerating project timelines and reducing human error."
       },
       {
-        title: "Enhanced Productivity",
-        description: "Empower your team to focus on strategic tasks while automation handles routine operations. Boost overall productivity and innovation across your organization."
+        title: "Scalable Workflows",
+        description: "Easily ramp up or down as your business evolves, ensuring that automated processes grow alongside your organization."
       }
-    ]
+    ],
+    cta: {
+      title: "Drive Productivity Forward",
+      description: "Start now to integrate state-of-the-art automation systems into your operations. Our experts will tailor solutions that free up time, reduce errors, and position your business for sustainable growth."
+    }
   },
   "ai-agents": {
     title: "AI Agents",
-    subtitle: "Empower Your Business with Autonomous AI Solutions",
-    description: "Deploy intelligent AI agents that work tirelessly to optimize your operations. From decision-making to complex problem-solving, our AI agents deliver consistent, high-quality results around the clock.",
+    subtitle: "Intelligent Solutions Beyond Chatbots",
+    description: "Take your customer engagement and business operations to the next level with AI Agents. These advanced digital assistants go beyond basic conversation, learning continuously to handle complex tasks and decisions.",
     benefits: [
       {
-        title: "Task Automation",
-        description: "AI agents can autonomously handle complex tasks, from data analysis to decision-making, working 24/7 without human intervention. Experience unmatched efficiency and consistency in your operations."
+        title: "Deep Learning & Adaptability",
+        description: "AI Agents leverage machine learning to understand user behavior, adapt to new data, and refine their performance over time."
       },
       {
-        title: "Adaptive Learning",
-        description: "Our AI agents continuously learn from interactions and outcomes, improving their performance and adapting to new scenarios. Watch as they become more efficient and effective over time."
+        title: "Proactive Insights",
+        description: "Instead of just responding to inquiries, AI Agents can predict user needs, offer tailored suggestions, and proactively solve problems."
       },
       {
-        title: "Multi-Agent Collaboration",
-        description: "Deploy multiple AI agents that work together seamlessly, sharing information and coordinating actions to solve complex problems. Achieve unprecedented levels of automation and efficiency."
+        title: "Seamless Multi-Channel Integration",
+        description: "Deploy AI Agents across multiple platforms—from websites and mobile apps to social media and smart devices—for unified user experiences."
       }
-    ]
+    ],
+    cta: {
+      title: "Elevate Your Customer Experience",
+      description: "Start now to empower your business with AI Agents that evolve alongside your customers' needs. Our team will help implement solutions that reduce costs, enhance engagement, and future-proof your operations."
+    }
   },
   "performance-optimization": {
     title: "Performance Optimization",
-    subtitle: "Maximize Efficiency with AI-Driven Insights",
-    description: "Leverage advanced analytics and machine learning to identify and eliminate bottlenecks in your systems. Our performance optimization solutions help you achieve peak efficiency and maximize ROI.",
+    subtitle: "Unlock Your System's Full Potential",
+    description: "Our Performance Optimization services ensure your AI-driven systems run at peak efficiency. Eliminate bottlenecks, enhance scalability, and continuously refine processes for maximum ROI.",
     benefits: [
       {
-        title: "Resource Efficiency",
-        description: "Optimize resource allocation across your organization with AI-driven insights. Ensure every asset is utilized to its full potential while minimizing waste."
+        title: "Advanced Analytics",
+        description: "Gain deep insights into system performance with real-time metrics and reporting, enabling data-driven improvements."
       },
       {
-        title: "System Performance",
-        description: "Enhance the speed and reliability of your business systems through continuous monitoring and optimization. Keep your operations running at peak efficiency."
+        title: "Real-Time Scaling",
+        description: "Automatically adjust resources to meet fluctuating demands—preventing downtime and reducing unnecessary expenses."
       },
       {
-        title: "Cost Optimization",
-        description: "Identify and eliminate inefficiencies in your processes and operations. Reduce operational costs while maintaining or improving service quality."
+        title: "Cost-Effective Improvements",
+        description: "By identifying inefficiencies and fine-tuning existing processes, you get more out of your technology investments without overspending."
       }
-    ]
+    ],
+    cta: {
+      title: "Harness Peak Efficiency",
+      description: "Start now to discover how our Performance Optimization solutions can streamline your operations, cut costs, and give you a competitive edge. Our experts will guide you every step of the way, so you can focus on growing your business."
+    }
   }
 } as const;
