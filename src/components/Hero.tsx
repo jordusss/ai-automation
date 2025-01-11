@@ -2,6 +2,13 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen pt-16 flex items-center">
       <div className="container mx-auto px-4">
@@ -28,10 +35,19 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" className="bg-primary hover:bg-primary/80">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/80"
+              onClick={() => scrollToSection('#contact')}
+            >
               Get Started
             </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary/10"
+              onClick={() => scrollToSection('#services')}
+            >
               Learn More
             </Button>
           </motion.div>
