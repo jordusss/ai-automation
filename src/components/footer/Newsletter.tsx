@@ -2,19 +2,40 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useToast } from "../ui/use-toast";
+import { supabase } from "@/lib/supabase";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    setIsLoading(true);
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email }]);
+
+      if (error) throw error;
+
       toast({
         title: "Success!",
         description: "Thank you for subscribing to our newsletter.",
       });
       setEmail("");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message === "duplicate key value violates unique constraint" 
+          ? "This email is already subscribed to our newsletter."
+          : "Failed to subscribe to newsletter. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -31,9 +52,10 @@ const Newsletter = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="bg-background"
+          disabled={isLoading}
         />
-        <Button type="submit" className="w-full">
-          Subscribe
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? "Subscribing..." : "Subscribe"}
         </Button>
       </form>
     </div>
