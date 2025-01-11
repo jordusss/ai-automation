@@ -63,22 +63,22 @@ const ServiceDetail = () => {
           position: "relative",
           overflow: "hidden",
         } as const;
-      case "machine-learning":
+      case "ai-agents":
         return {
           background: `
             linear-gradient(45deg, 
               rgba(17, 24, 39, 0.95), 
-              rgba(124, 58, 237, 0.85)
+              rgba(79, 70, 229, 0.85)
             ),
             radial-gradient(circle at 70% 30%, 
-              rgba(124, 58, 237, 0.4) 0%, 
-              rgba(109, 40, 217, 0.4) 50%, 
-              rgba(91, 33, 182, 0.4) 100%
+              rgba(79, 70, 229, 0.4) 0%, 
+              rgba(67, 56, 202, 0.4) 50%, 
+              rgba(55, 48, 163, 0.4) 100%
             ),
             repeating-linear-gradient(
               135deg,
-              rgba(167, 139, 250, 0.1) 0px,
-              rgba(167, 139, 250, 0.1) 2px,
+              rgba(99, 102, 241, 0.1) 0px,
+              rgba(99, 102, 241, 0.1) 2px,
               transparent 2px,
               transparent 10px
             )
@@ -145,18 +145,18 @@ const ServiceDetail = () => {
         description: "Free up employees to focus on high-value strategic tasks."
       }
     ],
-    "machine-learning": [
+    "ai-agents": [
       {
-        title: "Predictive Analytics",
-        description: "Make data-driven decisions with accurate forecasting and trend analysis."
+        title: "Task Automation",
+        description: "AI agents can autonomously handle complex tasks, from data analysis to decision-making, working 24/7 without human intervention."
       },
       {
-        title: "Pattern Recognition",
-        description: "Identify complex patterns in data that humans might miss."
+        title: "Adaptive Learning",
+        description: "Agents continuously learn from interactions and outcomes, improving their performance and adapting to new scenarios."
       },
       {
-        title: "Continuous Improvement",
-        description: "Models that learn and adapt to new data, becoming more accurate over time."
+        title: "Multi-Agent Collaboration",
+        description: "Multiple AI agents can work together, sharing information and coordinating actions to solve complex problems."
       }
     ],
     "performance-optimization": [
