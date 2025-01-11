@@ -23,11 +23,9 @@ export const useContactForm = () => {
     console.log('Submitting form data:', contactData);
 
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('contact_form')
         .insert(contactData);
-
-      console.log('Supabase response:', { data, error });
 
       if (error) {
         console.error('Supabase error:', error);
