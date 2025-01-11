@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useToast } from "../ui/use-toast";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -11,28 +11,24 @@ const Newsletter = () => {
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter an email address.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setIsLoading(true);
-    console.log("Attempting to subscribe email:", email);
     
     try {
-      console.log("Making Supabase request...");
-      const { error, data } = await supabase
+      const { error } = await supabase
         .from('newsletter_subscriptions')
         .insert([{ email }]);
 
-      console.log("Supabase response:", { error, data });
-
       if (error) {
-        // Check if the error is due to missing table
-        if (error.code === "42P01") {
-          toast({
-            title: "Database Setup Required",
-            description: "The newsletter subscription system needs to be set up. Please create the newsletter_subscriptions table in Supabase with an 'email' column.",
-            variant: "destructive",
-          });
-        } else if (error.code === "23505") {
+        if (error.code === "23505") {
           toast({
             title: "Already Subscribed",
             description: "This email is already subscribed to our newsletter.",
