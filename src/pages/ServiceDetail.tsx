@@ -40,21 +40,6 @@ const ServiceDetail = () => {
       <ServiceHeader slug={slug} />
 
       <ServiceBenefits benefits={benefits} cta={cta} />
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-        className="py-24 text-center"
-      >
-        <Button
-          size="lg"
-          className="bg-primary hover:bg-primary/80"
-          onClick={() => navigate("/#contact")}
-        >
-          Get Started
-        </Button>
-      </motion.div>
     </motion.div>
   );
 };
