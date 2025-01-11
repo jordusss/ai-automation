@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
+import Terms from "./pages/Terms";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
@@ -52,7 +53,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <ScrollToTop /> {/* Add ScrollToTop component here */}
+          <ScrollToTop />
           <div className="relative z-20 flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-1 relative">
@@ -60,6 +61,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/terms" element={<Terms />} />
               </Routes>
             </main>
             <Footer />
