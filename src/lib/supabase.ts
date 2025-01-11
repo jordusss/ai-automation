@@ -1,47 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import type { Database } from '@/integrations/supabase/types';
 
-// When using Lovable's Supabase integration, these values are automatically injected
-declare global {
-  interface Window {
-    SUPABASE_URL: string;
-    SUPABASE_ANON_KEY: string;
-  }
-}
+const supabaseUrl = 'https://kgvimgidwarishuujibi.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtndmltZ2lkd2FyaXNodXVqaWJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDUwMDc3OTcsImV4cCI6MjAyMDU4Mzc5N30.vxjjqQBgZGF4GcKp6HJ4x7QZMhqDw9blelzTwkqsXtY';
 
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
-
-export const getSupabaseClient = () => {
-  console.log('Supabase URL:', window.SUPABASE_URL);
-  console.log('Supabase Anon Key exists:', !!window.SUPABASE_ANON_KEY);
-
-  if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
-    console.error('Missing Supabase credentials:', {
-      url: !!window.SUPABASE_URL,
-      key: !!window.SUPABASE_ANON_KEY
-    });
-    throw new Error(
-      'Supabase connection failed. Please ensure you have connected your Supabase project and reloaded the page.'
-    );
-  }
-
-  if (!supabaseInstance) {
-    try {
-      supabaseInstance = createClient(
-        window.SUPABASE_URL,
-        window.SUPABASE_ANON_KEY
-      );
-      console.log('Supabase client initialized successfully');
-    } catch (error) {
-      console.error('Error initializing Supabase client:', error);
-      throw error;
-    }
-  }
-
-  return supabaseInstance;
-};
-
-export const supabase = {
-  from: (...args: Parameters<ReturnType<typeof createClient>['from']>) => 
-    getSupabaseClient().from(...args),
-  // Add other methods as needed
-};
+export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
