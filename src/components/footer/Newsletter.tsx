@@ -24,7 +24,24 @@ const Newsletter = () => {
 
       console.log("Supabase response:", { error, data });
 
-      if (error) throw error;
+      if (error) {
+        // Check if the error is due to missing table
+        if (error.code === "42P01") {
+          toast({
+            title: "Database Setup Required",
+            description: "The newsletter subscription system needs to be set up. Please create the newsletter_subscriptions table in Supabase with an 'email' column.",
+            variant: "destructive",
+          });
+        } else if (error.code === "23505") {
+          toast({
+            title: "Already Subscribed",
+            description: "This email is already subscribed to our newsletter.",
+          });
+        } else {
+          throw error;
+        }
+        return;
+      }
 
       toast({
         title: "Success!",
@@ -35,9 +52,7 @@ const Newsletter = () => {
       console.error("Subscription error:", error);
       toast({
         title: "Error",
-        description: error.message === "duplicate key value violates unique constraint" 
-          ? "This email is already subscribed to our newsletter."
-          : "Failed to subscribe to newsletter. Please try again.",
+        description: "Failed to subscribe to newsletter. Please try again later.",
         variant: "destructive",
       });
     } finally {
