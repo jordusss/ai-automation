@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
@@ -11,6 +11,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [showScrollButton, setShowScrollButton] = useState(false);
   const { toast } = useToast();
+  const location = useLocation();
 
   const handleScroll = () => {
     if (window.scrollY > 300) {
@@ -20,7 +21,20 @@ const Footer = () => {
     }
   };
 
-  // Add scroll event listener
+  const scrollToSection = (sectionId: string) => {
+    // If we're not on the homepage, first navigate there
+    if (location.pathname !== '/') {
+      window.location.href = `/${sectionId}`;
+      return;
+    }
+    
+    // If we're already on the homepage, just scroll to the section
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -73,8 +87,18 @@ const Footer = () => {
             <nav className="flex flex-col space-y-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">Home</Link>
               <Link to="/about" className="hover:text-primary transition-colors">About Us</Link>
-              <Link to="/#services" className="hover:text-primary transition-colors">Services</Link>
-              <Link to="/#contact" className="hover:text-primary transition-colors">Contact Us</Link>
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="text-left hover:text-primary transition-colors"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="text-left hover:text-primary transition-colors"
+              >
+                Contact Us
+              </button>
             </nav>
           </div>
 
