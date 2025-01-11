@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 const Terms = () => {
   return (
     <div className="container mx-auto px-4 py-24">
-      <Card className="max-w-4xl mx-auto p-6 md:p-8 prose prose-gray dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground">
+      <Card className="max-w-4xl mx-auto p-6 md:p-8 prose prose-gray dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground [&>p]:mb-6 [&>h2]:mt-8 [&>h3]:mt-6 [&>ul]:mb-6">
         <h1 className="text-3xl font-bold mb-6">Terms of Service AI Automation B.V.</h1>
         <p className="text-sm text-muted-foreground mb-6">Version: 1.0<br />Date: January 11, 2025</p>
 
