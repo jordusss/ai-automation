@@ -12,7 +12,6 @@ const Footer = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
   const { toast } = useToast();
 
-  // Show/hide scroll button based on scroll position
   const handleScroll = () => {
     if (window.scrollY > 300) {
       setShowScrollButton(true);
@@ -49,7 +48,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">TechVision AI</h3>
+            <h3 className="text-lg font-bold">AI Automation B.V.</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -61,8 +60,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <a href="mailto:contact@techvision.ai" className="hover:text-primary transition-colors">
-                  contact@techvision.ai
+                <a href="mailto:info@ai-automation.nl" className="hover:text-primary transition-colors">
+                  info@ai-automation.nl
                 </a>
               </div>
             </div>
@@ -74,8 +73,8 @@ const Footer = () => {
             <nav className="flex flex-col space-y-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary transition-colors">Home</Link>
               <Link to="/about" className="hover:text-primary transition-colors">About Us</Link>
-              <Link to="/services" className="hover:text-primary transition-colors">Services</Link>
-              <Link to="/contact" className="hover:text-primary transition-colors">Contact Us</Link>
+              <Link to="/#services" className="hover:text-primary transition-colors">Services</Link>
+              <Link to="/#contact" className="hover:text-primary transition-colors">Contact Us</Link>
             </nav>
           </div>
 
@@ -114,7 +113,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} TechVision AI. All rights reserved.
+            © {new Date().getFullYear()} AI Automation B.V. All rights reserved.
           </div>
           
           {/* Social Media Links */}
