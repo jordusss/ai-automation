@@ -8,13 +8,27 @@ declare global {
   }
 }
 
-if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
-  throw new Error(
-    'Supabase URL and Anon Key are required. Please make sure you have connected your Supabase project in the Lovable interface.'
-  );
-}
+let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
-export const supabase = createClient(
-  window.SUPABASE_URL,
-  window.SUPABASE_ANON_KEY
-);
+export const getSupabaseClient = () => {
+  if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+    throw new Error(
+      'Supabase URL and Anon Key are required. Please make sure you have connected your Supabase project in the Lovable interface.'
+    );
+  }
+
+  if (!supabaseInstance) {
+    supabaseInstance = createClient(
+      window.SUPABASE_URL,
+      window.SUPABASE_ANON_KEY
+    );
+  }
+
+  return supabaseInstance;
+};
+
+export const supabase = {
+  from: (...args: Parameters<ReturnType<typeof createClient>['from']>) => 
+    getSupabaseClient().from(...args),
+  // Add other methods as needed
+};
