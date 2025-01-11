@@ -19,18 +19,18 @@ const App = () => (
       <div className="relative min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
         <div className="fixed inset-0 -z-20">
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20 opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20 opacity-30" />
           <motion.div
             animate={{
               scale: [1, 1.1, 1],
-              opacity: [0.3, 0.2, 0.3],
+              opacity: [0.5, 0.3, 0.5],
             }}
             transition={{
               duration: 8,
               repeat: Infinity,
               repeatType: "reverse",
             }}
-            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_50%)]"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.2),transparent_50%)]"
           />
         </div>
         {/* Particle background with lower z-index */}
