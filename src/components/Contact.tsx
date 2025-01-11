@@ -2,8 +2,23 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { motion } from "framer-motion";
+import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Show success toast
+    toast({
+      title: "Message sent!",
+      description: "Thank you for getting in touch. We'll get back to you soon.",
+    });
+
+    // Reset form
+    const form = e.target as HTMLFormElement;
+    form.reset();
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
@@ -21,6 +36,7 @@ const Contact = () => {
             </p>
           </motion.div>
           <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -32,13 +48,13 @@ const Contact = () => {
                 <label htmlFor="name" className="text-sm font-medium">
                   Name
                 </label>
-                <Input id="name" placeholder="John Doe" />
+                <Input id="name" placeholder="John Doe" required />
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">
                   Email
                 </label>
-                <Input id="email" type="email" placeholder="john@example.com" />
+                <Input id="email" type="email" placeholder="john@example.com" required />
               </div>
             </div>
             <div className="space-y-2">
@@ -49,9 +65,10 @@ const Contact = () => {
                 id="message"
                 placeholder="Tell us about your project..."
                 className="min-h-[120px]"
+                required
               />
             </div>
-            <Button className="w-full bg-primary hover:bg-primary/80">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/80">
               Send Message
             </Button>
           </motion.form>
