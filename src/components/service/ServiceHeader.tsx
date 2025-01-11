@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
 import { getBackgroundStyle } from "@/utils/serviceStyles";
 import { Button } from "@/components/ui/button";
+import { serviceBenefits } from "@/data/serviceBenefits";
 
 interface ServiceHeaderProps {
-  title: string;
-  description: string;
   slug: string;
 }
 
-const ServiceHeader = ({ title, description, slug }: ServiceHeaderProps) => {
+const ServiceHeader = ({ slug }: ServiceHeaderProps) => {
+  const service = serviceBenefits[slug];
+
   return (
     <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div
@@ -30,7 +31,7 @@ const ServiceHeader = ({ title, description, slug }: ServiceHeaderProps) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400"
           >
-            Transform Your Customer Service with Intelligent Conversational Agents
+            {service.subtitle}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +39,7 @@ const ServiceHeader = ({ title, description, slug }: ServiceHeaderProps) => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-xl md:text-2xl text-foreground/80 mb-8"
           >
-            Our AI Chatbots deliver personalized, 24/7 support that elevates the customer experience while reducing operational costs. Harness real-time data and seamless scalability to meet growing demands in any industry.
+            {service.description}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

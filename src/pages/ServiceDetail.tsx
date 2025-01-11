@@ -37,11 +37,7 @@ const ServiceDetail = () => {
         </Button>
       </div>
 
-      <ServiceHeader
-        title={serviceBenefits[slug].title}
-        description={serviceBenefits[slug].description}
-        slug={slug}
-      />
+      <ServiceHeader slug={slug} />
 
       <ServiceBenefits benefits={benefits} cta={cta} />
 
