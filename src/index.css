@@ -43,7 +43,7 @@
 
 .glass-card {
   @apply bg-gradient-to-br from-white/5 to-white/10 
-         backdrop-blur-sm 
+         backdrop-blur-[2px]
          border border-white/10 
          shadow-lg 
          relative 
@@ -53,7 +53,7 @@
 .glass-card::before {
   content: '';
   @apply absolute inset-0 
-         bg-gradient-to-br from-primary/5 to-purple-600/5 
+         bg-gradient-to-br from-primary/3 to-purple-600/3 
          pointer-events-none;
 }
 
