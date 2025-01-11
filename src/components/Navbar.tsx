@@ -1,8 +1,7 @@
-import { Menu } from "lucide-react";
-import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
+import DesktopMenu from "./nav/DesktopMenu";
+import MobileMenu from "./nav/MobileMenu";
 
 const Navbar = () => {
   const location = useLocation();
@@ -34,73 +33,8 @@ const Navbar = () => {
         <Link to="/" className="hover:opacity-80 transition-opacity">
           <Logo />
         </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {menuItems.map((item) => (
-            item.href.startsWith('#') ? (
-              <button
-                key={item.label}
-                onClick={() => handleClick(item.href)}
-                className="text-sm font-medium text-foreground/60 hover:text-primary transition-colors"
-              >
-                {item.label}
-              </button>
-            ) : (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="text-sm font-medium text-foreground/60 hover:text-primary transition-colors"
-              >
-                {item.label}
-              </Link>
-            )
-          ))}
-          <Button 
-            onClick={() => handleClick('#contact')} 
-            className="bg-primary hover:bg-primary/80"
-          >
-            Get Started
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent>
-            <div className="flex flex-col gap-4 mt-8">
-              {menuItems.map((item) => (
-                item.href.startsWith('#') ? (
-                  <button
-                    key={item.label}
-                    onClick={() => handleClick(item.href)}
-                    className="text-lg font-medium text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="text-lg font-medium text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              ))}
-              <Button 
-                onClick={() => handleClick('#contact')} 
-                className="bg-primary hover:bg-primary/80 mt-4"
-              >
-                Get Started
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
+        <DesktopMenu menuItems={menuItems} handleClick={handleClick} />
+        <MobileMenu menuItems={menuItems} handleClick={handleClick} />
       </div>
     </nav>
   );
