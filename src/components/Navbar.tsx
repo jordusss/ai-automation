@@ -8,7 +8,6 @@ const Navbar = () => {
   const menuItems = [
     { label: "Services", href: "#services" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "#contact" },
   ];
 
   const handleClick = (href: string) => {
