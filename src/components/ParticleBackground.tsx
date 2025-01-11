@@ -12,7 +12,7 @@ const ParticleBackground = () => {
     <Particles
       id="tsparticles"
       init={particlesInit}
-      className="fixed inset-0 z-[-1]"
+      className="fixed inset-0"
       options={{
         background: {
           color: {

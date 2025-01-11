@@ -16,9 +16,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
+      <div className="relative min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
-        <div className="fixed inset-0 bg-background z-[-2]">
+        <div className="fixed inset-0">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20 opacity-50" />
           <motion.div
             animate={{
@@ -38,7 +38,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Navbar />
-          <main className="flex-1">
+          <main className="flex-1 relative">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
