@@ -41,27 +41,29 @@
   }
 }
 
-.glass-card {
-  @apply bg-gradient-to-br from-white/5 to-white/10 
-         backdrop-blur-[2px]
-         border border-white/10 
-         shadow-lg 
-         relative 
-         overflow-hidden;
-}
+@layer components {
+  .glass-card {
+    @apply bg-gradient-to-br from-white/5 to-white/10 
+           backdrop-blur-[2px]
+           border border-white/10 
+           shadow-lg 
+           relative 
+           overflow-hidden;
+  }
 
-.glass-card::before {
-  content: '';
-  @apply absolute inset-0 
-         bg-gradient-to-br from-primary/3 to-purple-600/3 
-         pointer-events-none;
-}
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 
+           bg-gradient-to-br from-primary/[0.03] to-purple-600/[0.03]
+           pointer-events-none;
+  }
 
-.neon-border {
-  @apply relative;
-}
+  .neon-border {
+    @apply relative;
+  }
 
-.neon-border::after {
-  content: '';
-  @apply absolute inset-0 rounded-lg border-2 border-primary/50 blur-sm;
+  .neon-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg border-2 border-primary/50 blur-sm;
+  }
 }
