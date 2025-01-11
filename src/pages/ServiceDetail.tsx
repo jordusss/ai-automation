@@ -3,177 +3,18 @@ import { motion } from "framer-motion";
 import { services } from "@/components/Services";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ServiceHeader from "@/components/service/ServiceHeader";
+import ServiceBenefits from "@/components/service/ServiceBenefits";
+import { serviceBenefits } from "@/data/serviceBenefits";
 
 const ServiceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const service = services.find((s) => s.slug === slug);
 
-  if (!service) {
+  if (!service || !slug) {
     return null;
   }
-
-  const getBackgroundStyle = (slug: string) => {
-    switch (slug) {
-      case "ai-chatbots":
-        return {
-          background: `
-            linear-gradient(45deg, 
-              rgba(34, 31, 38, 0.95), 
-              rgba(155, 135, 245, 0.85)
-            ),
-            radial-gradient(circle at 50% 50%, 
-              rgba(14, 165, 233, 0.4) 0%, 
-              rgba(139, 92, 246, 0.4) 50%, 
-              rgba(217, 70, 239, 0.4) 100%
-            ),
-            repeating-linear-gradient(
-              45deg,
-              rgba(249, 115, 22, 0.1) 0px,
-              rgba(249, 115, 22, 0.1) 2px,
-              transparent 2px,
-              transparent 10px
-            )
-          `,
-          backgroundBlendMode: "overlay, screen, normal",
-          position: "relative",
-          overflow: "hidden",
-        } as const;
-      case "process-automation":
-        return {
-          background: `
-            linear-gradient(45deg, 
-              rgba(15, 23, 42, 0.9), 
-              rgba(56, 189, 248, 0.8)
-            ),
-            radial-gradient(circle at 30% 70%, 
-              rgba(56, 189, 248, 0.4) 0%, 
-              rgba(14, 165, 233, 0.4) 50%, 
-              rgba(3, 105, 161, 0.4) 100%
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              rgba(56, 189, 248, 0.1) 0px,
-              rgba(56, 189, 248, 0.1) 1px,
-              transparent 1px,
-              transparent 8px
-            )
-          `,
-          backgroundBlendMode: "overlay, screen, normal",
-          position: "relative",
-          overflow: "hidden",
-        } as const;
-      case "ai-agents":
-        return {
-          background: `
-            linear-gradient(45deg, 
-              rgba(17, 24, 39, 0.95), 
-              rgba(79, 70, 229, 0.85)
-            ),
-            radial-gradient(circle at 70% 30%, 
-              rgba(79, 70, 229, 0.4) 0%, 
-              rgba(67, 56, 202, 0.4) 50%, 
-              rgba(55, 48, 163, 0.4) 100%
-            ),
-            repeating-linear-gradient(
-              135deg,
-              rgba(99, 102, 241, 0.1) 0px,
-              rgba(99, 102, 241, 0.1) 2px,
-              transparent 2px,
-              transparent 10px
-            )
-          `,
-          backgroundBlendMode: "overlay, screen, normal",
-          position: "relative",
-          overflow: "hidden",
-        } as const;
-      case "performance-optimization":
-        return {
-          background: `
-            linear-gradient(45deg, 
-              rgba(20, 83, 45, 0.95), 
-              rgba(34, 197, 94, 0.85)
-            ),
-            radial-gradient(circle at 40% 60%, 
-              rgba(34, 197, 94, 0.4) 0%, 
-              rgba(22, 163, 74, 0.4) 50%, 
-              rgba(21, 128, 61, 0.4) 100%
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              rgba(74, 222, 128, 0.1) 0px,
-              rgba(74, 222, 128, 0.1) 2px,
-              transparent 2px,
-              transparent 10px
-            )
-          `,
-          backgroundBlendMode: "overlay, screen, normal",
-          position: "relative",
-          overflow: "hidden",
-        } as const;
-      default:
-        return {};
-    }
-  };
-
-  const benefits = {
-    "ai-chatbots": [
-      {
-        title: "24/7 Customer Support",
-        description: "Provide instant responses to customer inquiries around the clock, improving satisfaction and reducing support costs."
-      },
-      {
-        title: "Scalable Operations",
-        description: "Handle thousands of conversations simultaneously without compromising quality or response time."
-      },
-      {
-        title: "Data-Driven Insights",
-        description: "Gather valuable customer interaction data to improve products and services continuously."
-      }
-    ],
-    "process-automation": [
-      {
-        title: "Increased Efficiency",
-        description: "Eliminate manual tasks and reduce human error in business processes."
-      },
-      {
-        title: "Cost Reduction",
-        description: "Significantly lower operational costs through automated workflows."
-      },
-      {
-        title: "Enhanced Productivity",
-        description: "Free up employees to focus on high-value strategic tasks."
-      }
-    ],
-    "ai-agents": [
-      {
-        title: "Task Automation",
-        description: "AI agents can autonomously handle complex tasks, from data analysis to decision-making, working 24/7 without human intervention."
-      },
-      {
-        title: "Adaptive Learning",
-        description: "Agents continuously learn from interactions and outcomes, improving their performance and adapting to new scenarios."
-      },
-      {
-        title: "Multi-Agent Collaboration",
-        description: "Multiple AI agents can work together, sharing information and coordinating actions to solve complex problems."
-      }
-    ],
-    "performance-optimization": [
-      {
-        title: "Resource Efficiency",
-        description: "Optimize resource allocation for maximum ROI."
-      },
-      {
-        title: "System Performance",
-        description: "Improve speed and reliability of business systems."
-      },
-      {
-        title: "Cost Optimization",
-        description: "Identify and eliminate inefficiencies in processes and operations."
-      }
-    ]
-  };
 
   return (
     <motion.div
@@ -192,77 +33,13 @@ const ServiceDetail = () => {
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="glass-card rounded-2xl overflow-hidden mb-12"
-        >
-          <div
-            className="h-64 md:h-96 bg-cover bg-center relative"
-            style={getBackgroundStyle(service.slug)}
-          >
-            {service.slug === "ai-chatbots" && (
-              <>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0.5, 1] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="w-32 h-32 rounded-full border-2 border-white/30"
-                  />
-                </div>
-                <div className="absolute inset-0">
-                  {[...Array(20)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-white/30 rounded-full"
-                      style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`,
-                      }}
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.3, 0.7, 0.3],
-                      }}
-                      transition={{
-                        duration: 2 + Math.random() * 2,
-                        repeat: Infinity,
-                        delay: Math.random() * 2,
-                      }}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-          <div className="p-8 md:p-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{service.title}</h1>
-            <p className="text-xl text-foreground/60 mb-8">{service.description}</p>
-          </div>
-        </motion.div>
+        <ServiceHeader
+          title={service.title}
+          description={service.description}
+          slug={service.slug}
+        />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold mb-8">Why Invest in {service.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits[service.slug].map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                className="glass-card p-6 rounded-xl"
-              >
-                <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
-                <p className="text-foreground/60">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <ServiceBenefits benefits={serviceBenefits[slug]} />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
