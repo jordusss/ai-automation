@@ -2,13 +2,19 @@ import { motion } from "framer-motion";
 import { getBackgroundStyle } from "@/utils/serviceStyles";
 import { Button } from "@/components/ui/button";
 import { serviceBenefits } from "@/data/serviceBenefits";
+import { useNavigate } from "react-router-dom";
 
 interface ServiceHeaderProps {
   slug: string;
 }
 
 const ServiceHeader = ({ slug }: ServiceHeaderProps) => {
+  const navigate = useNavigate();
   const service = serviceBenefits[slug];
+
+  const handleGetStarted = () => {
+    navigate('/#contact');
+  };
 
   return (
     <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
@@ -49,7 +55,7 @@ const ServiceHeader = ({ slug }: ServiceHeaderProps) => {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/80"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={handleGetStarted}
             >
               Get Started Now
             </Button>

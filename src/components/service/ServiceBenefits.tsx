@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Clock, Scale, LineChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface Benefit {
   title: string;
@@ -19,6 +20,8 @@ interface ServiceBenefitsProps {
 }
 
 const ServiceBenefits = ({ benefits, cta }: ServiceBenefitsProps) => {
+  const navigate = useNavigate();
+  
   const benefitsWithIcons = [
     {
       ...benefits[0],
@@ -33,6 +36,10 @@ const ServiceBenefits = ({ benefits, cta }: ServiceBenefitsProps) => {
       icon: <LineChart className="w-8 h-8" />,
     },
   ];
+
+  const handleGetStarted = () => {
+    navigate('/#contact');
+  };
 
   return (
     <div className="py-24 bg-gradient-to-b from-background via-background/95 to-background/90">
@@ -94,7 +101,7 @@ const ServiceBenefits = ({ benefits, cta }: ServiceBenefitsProps) => {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/80"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={handleGetStarted}
           >
             Get Started Now
           </Button>
