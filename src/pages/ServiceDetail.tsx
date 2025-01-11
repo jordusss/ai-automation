@@ -12,9 +12,11 @@ const ServiceDetail = () => {
   const navigate = useNavigate();
   const service = services.find((s) => s.slug === slug);
 
-  if (!service || !slug) {
+  if (!service || !slug || !serviceBenefits[slug]) {
     return null;
   }
+
+  const benefits = serviceBenefits[slug].benefits;
 
   return (
     <motion.div
@@ -35,12 +37,12 @@ const ServiceDetail = () => {
       </div>
 
       <ServiceHeader
-        title={service.title}
-        description={service.description}
-        slug={service.slug}
+        title={serviceBenefits[slug].title}
+        description={serviceBenefits[slug].description}
+        slug={slug}
       />
 
-      <ServiceBenefits benefits={serviceBenefits[slug]} />
+      <ServiceBenefits benefits={benefits} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
