@@ -7,11 +7,11 @@ const CompanyInfo = () => {
       <div className="space-y-2 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
           <MapPin className="h-4 w-4" />
-          <span>123 Tech Street, Silicon Valley, CA 94025</span>
+          <span>Rotterdam, The Netherlands</span>
         </div>
         <div className="flex items-center gap-2">
           <Phone className="h-4 w-4" />
-          <span>+1 (555) 123-4567</span>
+          <span>+31650869114</span>
         </div>
         <div className="flex items-center gap-2">
           <Mail className="h-4 w-4" />
