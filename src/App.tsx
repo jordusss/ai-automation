@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { motion } from "framer-motion";
 
 const queryClient = new QueryClient();
@@ -14,7 +15,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-hidden">
+      <div className="min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
         <div className="fixed inset-0 bg-background z-[-1]">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20" />
@@ -35,11 +36,14 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services/:slug" element={<ServiceDetail />} />
-          </Routes>
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
+            </Routes>
+          </main>
+          <Footer />
         </BrowserRouter>
       </div>
     </TooltipProvider>
