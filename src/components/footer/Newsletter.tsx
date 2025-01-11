@@ -14,10 +14,15 @@ const Newsletter = () => {
     if (!email) return;
 
     setIsLoading(true);
+    console.log("Attempting to subscribe email:", email);
+    
     try {
-      const { error } = await supabase
+      console.log("Making Supabase request...");
+      const { error, data } = await supabase
         .from('newsletter_subscriptions')
         .insert([{ email }]);
+
+      console.log("Supabase response:", { error, data });
 
       if (error) throw error;
 
@@ -27,6 +32,7 @@ const Newsletter = () => {
       });
       setEmail("");
     } catch (error: any) {
+      console.error("Subscription error:", error);
       toast({
         title: "Error",
         description: error.message === "duplicate key value violates unique constraint" 
