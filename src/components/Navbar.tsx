@@ -2,6 +2,7 @@ import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const location = useLocation();
@@ -30,8 +31,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-          AI Automation NL
+        <Link to="/" className="hover:opacity-80 transition-opacity">
+          <Logo />
         </Link>
 
         {/* Desktop Menu */}
