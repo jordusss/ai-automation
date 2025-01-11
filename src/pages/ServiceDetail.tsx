@@ -17,6 +17,7 @@ const ServiceDetail = () => {
   }
 
   const benefits = serviceBenefits[slug].benefits;
+  const cta = serviceBenefits[slug].cta;
 
   return (
     <motion.div
@@ -42,7 +43,7 @@ const ServiceDetail = () => {
         slug={slug}
       />
 
-      <ServiceBenefits benefits={benefits} />
+      <ServiceBenefits benefits={benefits} cta={cta} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

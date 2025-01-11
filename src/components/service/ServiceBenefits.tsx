@@ -8,11 +8,17 @@ interface Benefit {
   icon: JSX.Element;
 }
 
-interface ServiceBenefitsProps {
-  benefits: Benefit[];
+interface CTA {
+  title: string;
+  description: string;
 }
 
-const ServiceBenefits = ({ benefits }: ServiceBenefitsProps) => {
+interface ServiceBenefitsProps {
+  benefits: Benefit[];
+  cta: CTA;
+}
+
+const ServiceBenefits = ({ benefits, cta }: ServiceBenefitsProps) => {
   const benefitsWithIcons = [
     {
       ...benefits[0],
@@ -80,13 +86,10 @@ const ServiceBenefits = ({ benefits }: ServiceBenefitsProps) => {
           className="max-w-3xl mx-auto text-center"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
-            Ready to Enhance Your Customer Experience?
+            {cta.title}
           </h3>
           <p className="text-lg text-foreground/80 mb-8">
-            Subscribe now to unlock the power of AI Chatbots and revolutionize the way you engage with your audience. Our team will help you implement a cutting-edge solution tailored to your business, so you can focus on what matters most—growing your brand.
-          </p>
-          <p className="text-lg text-foreground/80 mb-8">
-            Take the next step in AI-driven automation and give your customers the support they deserve.
+            {cta.description}
           </p>
           <Button
             size="lg"
