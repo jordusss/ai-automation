@@ -13,13 +13,21 @@ const Contact = () => {
     const formData = new FormData(form);
     
     try {
-      const { error } = await supabase
+      console.log('Submitting form data:', {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      });
+
+      const { data, error } = await supabase
         .from('contact_form')
         .insert({
           name: formData.get('name')?.toString() || '',
           email: formData.get('email')?.toString() || '',
           message: formData.get('message')?.toString() || '',
         });
+
+      console.log('Supabase response:', { data, error });
 
       if (error) {
         console.error('Supabase error:', error);
