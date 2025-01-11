@@ -3,20 +3,44 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { motion } from "framer-motion";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Show success toast
-    toast({
-      title: "Message sent!",
-      description: "Thank you for getting in touch. We'll get back to you soon.",
-    });
-
-    // Reset form
     const form = e.target as HTMLFormElement;
-    form.reset();
+    const formData = new FormData(form);
+    
+    try {
+      const { error } = await supabase
+        .from('contact_form')
+        .insert([
+          {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message'),
+          },
+        ]);
+
+      if (error) throw error;
+
+      // Show success toast
+      toast({
+        title: "Message sent!",
+        description: "Thank you for getting in touch. We'll get back to you soon.",
+      });
+
+      // Reset form
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -48,13 +72,13 @@ const Contact = () => {
                 <label htmlFor="name" className="text-sm font-medium">
                   Name
                 </label>
-                <Input id="name" placeholder="John Doe" required />
+                <Input id="name" name="name" placeholder="John Doe" required />
               </div>
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">
                   Email
                 </label>
-                <Input id="email" type="email" placeholder="john@example.com" required />
+                <Input id="email" name="email" type="email" placeholder="john@example.com" required />
               </div>
             </div>
             <div className="space-y-2">
@@ -63,6 +87,7 @@ const Contact = () => {
               </label>
               <Textarea
                 id="message"
+                name="message"
                 placeholder="Tell us about your project..."
                 className="min-h-[120px]"
                 required
