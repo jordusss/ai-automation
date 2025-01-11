@@ -8,6 +8,12 @@ declare global {
   }
 }
 
+if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+  throw new Error(
+    'Supabase URL and Anon Key are required. Please make sure you have connected your Supabase project in the Lovable interface.'
+  );
+}
+
 export const supabase = createClient(
   window.SUPABASE_URL,
   window.SUPABASE_ANON_KEY
