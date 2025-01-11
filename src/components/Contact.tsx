@@ -21,7 +21,15 @@ const Contact = () => {
           message: formData.get('message')?.toString() || '',
         });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Error",
+          description: "There was a problem sending your message. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
 
       // Show success toast
       toast({
