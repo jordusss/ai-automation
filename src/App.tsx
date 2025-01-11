@@ -8,6 +8,7 @@ import About from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ParticleBackground from "./components/ParticleBackground";
 import { motion } from "framer-motion";
 
 const queryClient = new QueryClient();
@@ -17,7 +18,7 @@ const App = () => (
     <TooltipProvider>
       <div className="min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
-        <div className="fixed inset-0 bg-background z-[-1]">
+        <div className="fixed inset-0 bg-background z-[-2]">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20" />
           <motion.div
             animate={{
@@ -32,6 +33,7 @@ const App = () => (
             className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_50%)]"
           />
         </div>
+        <ParticleBackground />
         <Toaster />
         <Sonner />
         <BrowserRouter>
