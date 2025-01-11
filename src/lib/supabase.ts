@@ -11,17 +11,30 @@ declare global {
 let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 export const getSupabaseClient = () => {
+  console.log('Supabase URL:', window.SUPABASE_URL);
+  console.log('Supabase Anon Key exists:', !!window.SUPABASE_ANON_KEY);
+
   if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
+    console.error('Missing Supabase credentials:', {
+      url: !!window.SUPABASE_URL,
+      key: !!window.SUPABASE_ANON_KEY
+    });
     throw new Error(
-      'Supabase URL and Anon Key are required. Please make sure you have connected your Supabase project in the Lovable interface.'
+      'Supabase connection failed. Please ensure you have connected your Supabase project and reloaded the page.'
     );
   }
 
   if (!supabaseInstance) {
-    supabaseInstance = createClient(
-      window.SUPABASE_URL,
-      window.SUPABASE_ANON_KEY
-    );
+    try {
+      supabaseInstance = createClient(
+        window.SUPABASE_URL,
+        window.SUPABASE_ANON_KEY
+      );
+      console.log('Supabase client initialized successfully');
+    } catch (error) {
+      console.error('Error initializing Supabase client:', error);
+      throw error;
+    }
   }
 
   return supabaseInstance;
