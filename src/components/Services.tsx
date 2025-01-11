@@ -55,16 +55,21 @@ const Services = () => {
               viewport={{ once: true }}
               className="rounded-2xl overflow-hidden relative group cursor-pointer"
               onClick={() => navigate(`/services/${service.slug}`)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center">
-                <div className="text-primary mb-6 transform transition-transform duration-300 group-hover:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center border-2 border-primary/5 bg-white/5 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                <div className="mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:text-primary">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-foreground/60">{service.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">
+                  {service.description}
+                </p>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-purple-600/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl" />
               </div>
             </motion.div>
           ))}
