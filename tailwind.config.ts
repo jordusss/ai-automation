@@ -82,32 +82,7 @@ export default {
         float: "float 3s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite",
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: 'hsl(var(--foreground))',
-            h1: {
-              color: 'hsl(var(--foreground))',
-            },
-            h2: {
-              color: 'hsl(var(--foreground))',
-            },
-            h3: {
-              color: 'hsl(var(--foreground))',
-            },
-            strong: {
-              color: 'hsl(var(--foreground))',
-            },
-            a: {
-              color: 'hsl(var(--primary))',
-              '&:hover': {
-                color: 'hsl(var(--primary))',
-              },
-            },
-          },
-        },
-      },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
