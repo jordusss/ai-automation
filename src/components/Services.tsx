@@ -1,4 +1,4 @@
-import { Bot, Brain, Gauge, Workflow, Robot } from "lucide-react";
+import { Bot, Brain, Gauge, Workflow } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export const services = [
     image: "photo-1488972685288-c3fd157d7c7a",
   },
   {
-    icon: <Robot className="h-8 w-8" />,
+    icon: <Bot className="h-8 w-8" />,
     title: "AI Agents",
     description: "Autonomous AI agents that perform complex tasks and decision-making",
     slug: "ai-agents",
