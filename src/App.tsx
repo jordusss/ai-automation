@@ -18,7 +18,7 @@ const App = () => (
     <TooltipProvider>
       <div className="relative min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
-        <div className="fixed inset-0 -z-20">
+        <div className="fixed inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20 opacity-30" />
           <motion.div
             animate={{
@@ -33,22 +33,24 @@ const App = () => (
             className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.2),transparent_50%)]"
           />
         </div>
-        {/* Particle background with lower z-index */}
-        <div className="fixed inset-0 -z-10">
+        {/* Particle background */}
+        <div className="fixed inset-0 z-10">
           <ParticleBackground />
         </div>
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Navbar />
-          <main className="flex-1 relative">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services/:slug" element={<ServiceDetail />} />
-            </Routes>
-          </main>
-          <Footer />
+          <div className="relative z-20 flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1 relative">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
         </BrowserRouter>
       </div>
     </TooltipProvider>
