@@ -58,18 +58,18 @@ const Services = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center border-2 border-primary/5 bg-white/5 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
-                <div className="mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:text-primary">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="glass-card relative p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                <div className="mb-6 transform transition-all duration-300 group-hover:scale-110 group-hover:text-primary relative z-10">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300 relative z-10">
                   {service.title}
                 </h3>
-                <p className="text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="text-foreground/60 group-hover:text-foreground/80 transition-colors duration-300 relative z-10">
                   {service.description}
                 </p>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-purple-600/50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/30 to-purple-600/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl" />
               </div>
             </motion.div>
           ))}

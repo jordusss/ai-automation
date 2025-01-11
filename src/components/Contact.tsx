@@ -25,7 +25,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="glass-card neon-border p-8 rounded-lg space-y-6"
+            className="glass-card p-8 rounded-lg space-y-6 relative"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
