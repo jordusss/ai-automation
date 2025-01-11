@@ -19,7 +19,7 @@ const App = () => (
       <div className="min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
         {/* Background gradient */}
         <div className="fixed inset-0 bg-background z-[-2]">
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-background to-blue-500/20 opacity-50" />
           <motion.div
             animate={{
               scale: [1, 1.1, 1],
