@@ -20,8 +20,6 @@ export const useContactForm = () => {
       message: formData.get('message')?.toString() || '',
     };
 
-    console.log('Submitting form data:', contactData);
-
     try {
       const { error } = await supabase
         .from('contact_form')
