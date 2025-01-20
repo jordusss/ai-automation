@@ -12,6 +12,7 @@ import Privacy from "./pages/Privacy";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
+import CookieBanner from "./components/CookieBanner";
 import { motion } from "framer-motion";
 
 // ScrollToTop component to handle scroll behavior
@@ -67,6 +68,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <CookieBanner />
           </div>
         </BrowserRouter>
       </div>
