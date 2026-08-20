@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
 
 const OWNER_EMAIL = "debruijn.jordy@gmail.com";
 const SUBJECT = "New bid on ai-automation.nl";
