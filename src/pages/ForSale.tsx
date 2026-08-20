@@ -23,19 +23,19 @@ const mailtoHref = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(
 
 const points = [
   {
-    title: "Exact-match keywords",
+    title: "Says what you do",
     description:
-      "\u201cAI\u201d and \u201cautomation\u201d \u2014 the two words this entire market searches for, in one address.",
+      "No explaining, no spelling it out on the phone. Two words your customers already type into Google, and one of them is your entire industry.",
   },
   {
-    title: ".nl authority",
+    title: "Dutch by default",
     description:
-      "A trusted country domain that reads as established and local across the Benelux.",
+      "A .nl carries weight with Benelux buyers and procurement teams. It reads as a company that is here, registered, and not going anywhere.",
   },
   {
-    title: "Clean, immediate transfer",
+    title: "Yours within days",
     description:
-      "No encumbrances, no baggage. Handover completed within days of an agreement.",
+      "Clean history, no trademark disputes, no baggage. Agree on a number and the transfer is done before the week is out.",
   },
 ];
 
