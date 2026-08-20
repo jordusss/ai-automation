@@ -70,7 +70,7 @@ const ForSale = () => {
           {...fade(0)}
           className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground"
         >
-          Premium domain · For sale
+          This domain is for sale · One owner only
         </motion.p>
 
         <motion.h1
