@@ -27,6 +27,19 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Hide site chrome on the domain-for-sale landing page
+const Chrome = ({ position }: { position: "top" | "bottom" }) => {
+  const location = useLocation();
+  if (location.pathname === "/") return null;
+  if (position === "top") return <Navbar />;
+  return (
+    <>
+      <Footer />
+      <CookieBanner />
+    </>
+  );
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
