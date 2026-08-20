@@ -71,17 +71,11 @@ const ForSale = () => {
 
         <motion.div
           {...fade(0.24)}
-          className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
+          className="mt-10"
         >
           <Button asChild size="lg" className="rounded-none px-8">
             <a href={mailtoHref}>Make an offer</a>
           </Button>
-          <a
-            href={`mailto:${OWNER_EMAIL}`}
-            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-          >
-            {OWNER_EMAIL}
-          </a>
         </motion.div>
 
         <div className="mt-20">
