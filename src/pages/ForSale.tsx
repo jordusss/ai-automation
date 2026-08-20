@@ -131,7 +131,7 @@ const ForSale = () => {
           {...fade(0.56)}
           className="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground"
         >
-          <span>Serious enquiries only</span>
+          <span>Name your number. Every serious offer gets a reply.</span>
           <a
             href={mailtoHref}
             className="underline underline-offset-4 hover:text-foreground transition-colors"
