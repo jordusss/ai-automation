@@ -84,8 +84,9 @@ const ForSale = () => {
           {...fade(0.16)}
           className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
         >
-          A short, exact-match Dutch domain for the fastest-growing category in
-          software. Available now to a single owner — offers welcome.
+          The whole category in one address. Short enough to say out loud,
+          obvious enough that nobody forgets it, and available today — to
+          exactly one company.
         </motion.p>
 
         <motion.div
