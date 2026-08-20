@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Copy, Check, Sparkles, Globe, Zap } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
@@ -21,23 +21,29 @@ const mailtoHref = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(
   SUBJECT
 )}&body=${encodeURIComponent(BODY)}`;
 
-const highlights = [
+const points = [
   {
-    icon: Sparkles,
     title: "Exact-match keywords",
-    description: "\"AI\" + \"automation\" — the two words the whole market searches for.",
+    description:
+      "\u201cAI\u201d and \u201cautomation\u201d \u2014 the two words this entire market searches for, in one address.",
   },
   {
-    icon: Globe,
     title: ".nl authority",
-    description: "A trusted ccTLD with instant credibility in the Benelux market.",
+    description:
+      "A trusted country domain that reads as established and local across the Benelux.",
   },
   {
-    icon: Zap,
-    title: "Immediate transfer",
-    description: "Clean history, no encumbrances. Handover within days of agreement.",
+    title: "Clean, immediate transfer",
+    description:
+      "No encumbrances, no baggage. Handover completed within days of an agreement.",
   },
 ];
+
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
 
 const ForSale = () => {
   const [copied, setCopied] = useState(false);
@@ -58,104 +64,82 @@ const ForSale = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="w-full max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-primary"
+    <main className="min-h-screen flex flex-col justify-center px-6 py-24 md:py-32">
+      <div className="w-full max-w-3xl mx-auto">
+        <motion.p
+          {...fade(0)}
+          className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-glow" />
           Premium domain · For sale
-        </motion.div>
+        </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-8 text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-purple-600 break-words"
+          {...fade(0.08)}
+          className="mt-8 text-[clamp(2.5rem,9vw,6rem)] leading-[0.95] font-semibold break-words"
         >
           ai-automation.nl
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto"
+          {...fade(0.16)}
+          className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
         >
-          A short, exact-match Dutch domain for the fastest-growing category in tech.
-          Instantly credible for anyone building in AI automation.
+          A short, exact-match Dutch domain for the fastest-growing category in
+          software. Available now to a single owner — offers welcome.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          {...fade(0.24)}
+          className="mt-10 flex flex-col sm:flex-row gap-3"
         >
-          <Button
-            asChild
-            size="lg"
-            className="bg-primary hover:bg-primary/80 shadow-lg shadow-primary/20"
-          >
-            <a href={mailtoHref}>
-              <Mail className="mr-2 h-5 w-5" />
-              Make an offer
-            </a>
+          <Button asChild size="lg" className="rounded-none px-8">
+            <a href={mailtoHref}>Make an offer</a>
           </Button>
           <Button
             size="lg"
             variant="outline"
             onClick={copyEmail}
-            className="border-primary/50 text-primary hover:bg-primary/10"
+            className="rounded-none px-8"
           >
             {copied ? (
-              <Check className="mr-2 h-5 w-5" />
+              <Check className="mr-2 h-4 w-4" />
             ) : (
-              <Copy className="mr-2 h-5 w-5" />
+              <Copy className="mr-2 h-4 w-4" />
             )}
             {copied ? "Copied" : "Copy email address"}
           </Button>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          {highlights.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              className="glass-card rounded-2xl p-6"
+        <div className="mt-20">
+          {points.map((point, index) => (
+            <motion.section
+              key={point.title}
+              {...fade(0.32 + index * 0.06)}
+              className="hairline grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-2 md:gap-8 py-6"
             >
-              <item.icon className="h-6 w-6 text-primary relative z-10" />
-              <h2 className="mt-4 text-base font-semibold relative z-10">
-                {item.title}
-              </h2>
-              <p className="mt-2 text-sm text-foreground/60 relative z-10">
-                {item.description}
+              <h2 className="text-base font-semibold">{point.title}</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {point.description}
               </p>
-            </motion.div>
+            </motion.section>
           ))}
+          <div className="hairline" />
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-12 text-sm text-muted-foreground"
+        <motion.footer
+          {...fade(0.56)}
+          className="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground"
         >
-          Serious offers only ·{" "}
+          <span>Serious enquiries only</span>
           <a
             href={mailtoHref}
-            className="text-foreground/70 hover:text-primary transition-colors"
+            className="underline underline-offset-4 hover:text-foreground transition-colors"
           >
             {OWNER_EMAIL}
           </a>
-        </motion.p>
+        </motion.footer>
       </div>
-    </section>
+    </main>
   );
 };
 
