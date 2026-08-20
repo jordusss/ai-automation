@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
+import ForSale from "./pages/ForSale";
 import About from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
 import Terms from "./pages/Terms";
@@ -24,6 +25,19 @@ const ScrollToTop = () => {
   }, [location.pathname]);
 
   return null;
+};
+
+// Hide site chrome on the domain-for-sale landing page
+const Chrome = ({ position }: { position: "top" | "bottom" }) => {
+  const location = useLocation();
+  if (location.pathname === "/") return null;
+  if (position === "top") return <Navbar />;
+  return (
+    <>
+      <Footer />
+      <CookieBanner />
+    </>
+  );
 };
 
 const queryClient = new QueryClient();
@@ -57,18 +71,18 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <div className="relative z-20 flex flex-col min-h-screen">
-            <Navbar />
+            <Chrome position="top" />
             <main className="flex-1 relative">
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<ForSale />} />
+                <Route path="/home" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
               </Routes>
             </main>
-            <Footer />
-            <CookieBanner />
+            <Chrome position="bottom" />
           </div>
         </BrowserRouter>
       </div>
