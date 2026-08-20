@@ -23,19 +23,19 @@ const mailtoHref = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(
 
 const points = [
   {
-    title: "Exact-match keywords",
+    title: "Says what you do",
     description:
-      "\u201cAI\u201d and \u201cautomation\u201d \u2014 the two words this entire market searches for, in one address.",
+      "No explaining, no spelling it out on the phone. Two words your customers already type into Google, and one of them is your entire industry.",
   },
   {
-    title: ".nl authority",
+    title: "Dutch by default",
     description:
-      "A trusted country domain that reads as established and local across the Benelux.",
+      "A .nl carries weight with Benelux buyers and procurement teams. It reads as a company that is here, registered, and not going anywhere.",
   },
   {
-    title: "Clean, immediate transfer",
+    title: "Yours within days",
     description:
-      "No encumbrances, no baggage. Handover completed within days of an agreement.",
+      "Clean history, no trademark disputes, no baggage. Agree on a number and the transfer is done before the week is out.",
   },
 ];
 
@@ -70,7 +70,7 @@ const ForSale = () => {
           {...fade(0)}
           className="text-[11px] font-medium uppercase tracking-[0.28em] text-muted-foreground"
         >
-          Premium domain · For sale
+          This domain is for sale · One owner only
         </motion.p>
 
         <motion.h1
@@ -84,8 +84,9 @@ const ForSale = () => {
           {...fade(0.16)}
           className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
         >
-          A short, exact-match Dutch domain for the fastest-growing category in
-          software. Available now to a single owner — offers welcome.
+          The whole category in one address. Short enough to say out loud,
+          obvious enough that nobody forgets it, and available today — to
+          exactly one company.
         </motion.p>
 
         <motion.div
@@ -130,7 +131,7 @@ const ForSale = () => {
           {...fade(0.56)}
           className="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-sm text-muted-foreground"
         >
-          <span>Serious enquiries only</span>
+          <span>Name your number. Every serious offer gets a reply.</span>
           <a
             href={mailtoHref}
             className="underline underline-offset-4 hover:text-foreground transition-colors"
