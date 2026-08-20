@@ -43,23 +43,6 @@ const fade = (delay: number) => ({
 });
 
 const ForSale = () => {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(OWNER_EMAIL);
-      setCopied(true);
-      toast({ title: "Email copied", description: OWNER_EMAIL });
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      toast({
-        title: "Could not copy",
-        description: OWNER_EMAIL,
-        variant: "destructive",
-      });
-    }
-  };
-
   return (
     <main className="min-h-screen flex flex-col justify-center px-6 py-24 md:py-32">
       <div className="w-full max-w-3xl mx-auto">
