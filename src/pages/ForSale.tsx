@@ -69,15 +69,6 @@ const ForSale = () => {
           nobody forgets it, and available today — to exactly one company.
         </motion.p>
 
-        <motion.p
-          {...fade(0.2)}
-          lang="nl"
-          className="mt-4 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
-        >
-          Deze domeinnaam is te koop. Een korte, exact matchende Nederlandse
-          domeinnaam voor AI automation — doe een bod en de overdracht is binnen
-          enkele dagen geregeld.
-        </motion.p>
 
         <motion.div
           {...fade(0.24)}
