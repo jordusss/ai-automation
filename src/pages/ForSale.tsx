@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
 
 const OWNER_EMAIL = "debruijn.jordy@gmail.com";
 const SUBJECT = "New bid on ai-automation.nl";
@@ -46,23 +43,6 @@ const fade = (delay: number) => ({
 });
 
 const ForSale = () => {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(OWNER_EMAIL);
-      setCopied(true);
-      toast({ title: "Email copied", description: OWNER_EMAIL });
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      toast({
-        title: "Could not copy",
-        description: OWNER_EMAIL,
-        variant: "destructive",
-      });
-    }
-  };
-
   return (
     <main className="min-h-screen flex flex-col justify-center px-6 py-24 md:py-32">
       <div className="w-full max-w-3xl mx-auto">
@@ -91,24 +71,17 @@ const ForSale = () => {
 
         <motion.div
           {...fade(0.24)}
-          className="mt-10 flex flex-col sm:flex-row gap-3"
+          className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
         >
           <Button asChild size="lg" className="rounded-none px-8">
             <a href={mailtoHref}>Make an offer</a>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={copyEmail}
-            className="rounded-none px-8"
+          <a
+            href={`mailto:${OWNER_EMAIL}`}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
           >
-            {copied ? (
-              <Check className="mr-2 h-4 w-4" />
-            ) : (
-              <Copy className="mr-2 h-4 w-4" />
-            )}
-            {copied ? "Copied" : "Copy email address"}
-          </Button>
+            {OWNER_EMAIL}
+          </a>
         </motion.div>
 
         <div className="mt-20">
