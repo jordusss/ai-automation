@@ -20,19 +20,19 @@ const mailtoHref = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(
 
 const points = [
   {
-    title: "Says what you do",
+    title: "Exact-match keywords",
     description:
-      "No explaining, no spelling it out on the phone. Two words your customers already type into Google, and one of them is your entire industry.",
+      "An exact-match ai automation domain name: two words your customers already type into Google, and one of them is your entire industry. No explaining, no spelling it out on the phone.",
   },
   {
-    title: "Dutch by default",
+    title: "Dutch .nl authority",
     description:
-      "A .nl carries weight with Benelux buyers and procurement teams. It reads as a company that is here, registered, and not going anywhere.",
+      "A .nl domain carries weight with Benelux buyers and procurement teams. It reads as a company that is here, registered, and not going anywhere.",
   },
   {
-    title: "Yours within days",
+    title: "Clean transfer within days",
     description:
-      "Clean history, no trademark disputes, no baggage. Agree on a number and the transfer is done before the week is out.",
+      "Clean history, no trademark disputes, no baggage. Agree on a number and the domain transfer is done before the week is out.",
   },
 ];
 
@@ -64,9 +64,19 @@ const ForSale = () => {
           {...fade(0.16)}
           className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed"
         >
-          The whole category in one address. Short enough to say out loud,
-          obvious enough that nobody forgets it, and available today — to
-          exactly one company.
+          This premium AI automation domain name is for sale. The whole category
+          in one address: short enough to say out loud, obvious enough that
+          nobody forgets it, and available today — to exactly one company.
+        </motion.p>
+
+        <motion.p
+          {...fade(0.2)}
+          lang="nl"
+          className="mt-4 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+        >
+          Deze domeinnaam is te koop. Een korte, exact matchende Nederlandse
+          domeinnaam voor AI automation — doe een bod en de overdracht is binnen
+          enkele dagen geregeld.
         </motion.p>
 
         <motion.div
