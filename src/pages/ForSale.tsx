@@ -71,24 +71,17 @@ const ForSale = () => {
 
         <motion.div
           {...fade(0.24)}
-          className="mt-10 flex flex-col sm:flex-row gap-3"
+          className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
         >
           <Button asChild size="lg" className="rounded-none px-8">
             <a href={mailtoHref}>Make an offer</a>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={copyEmail}
-            className="rounded-none px-8"
+          <a
+            href={`mailto:${OWNER_EMAIL}`}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
           >
-            {copied ? (
-              <Check className="mr-2 h-4 w-4" />
-            ) : (
-              <Copy className="mr-2 h-4 w-4" />
-            )}
-            {copied ? "Copied" : "Copy email address"}
-          </Button>
+            {OWNER_EMAIL}
+          </a>
         </motion.div>
 
         <div className="mt-20">
