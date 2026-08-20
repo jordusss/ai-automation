@@ -58,18 +58,18 @@ const App = () => (
         <BrowserRouter>
           <ScrollToTop />
           <div className="relative z-20 flex flex-col min-h-screen">
-            <Navbar />
+            <Chrome position="top" />
             <main className="flex-1 relative">
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<ForSale />} />
+                <Route path="/home" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
               </Routes>
             </main>
-            <Footer />
-            <CookieBanner />
+            <Chrome position="bottom" />
           </div>
         </BrowserRouter>
       </div>
